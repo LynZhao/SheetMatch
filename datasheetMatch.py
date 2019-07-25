@@ -12,9 +12,10 @@ def dataSheetMerge(df_Sheet1):
     while (df_Sheet1.shape[0] > 0):
         keyValue = [df_Sheet1.iloc[0, 0], df_Sheet1.iloc[0, 1], df_Sheet1.iloc[0, 2]]
         tmpDF = df_Sheet1[df_Sheet1[selectedColumnName1[0]] == keyValue[0]]
+        #tmpDF['col2'] = tmpDF[selectedColumnName1[1]].map(lambda x: x[5:7])
+        #date1 = df_Sheet1[selectedColumnName1[1]]
         date2 = keyValue[1]
-        #tmpDF = tmpDF[df_Sheet1['col2'] == date2[5:7]]
-        tmpDF = tmpDF[df_Sheet1[selectedColumnName1[1]] == keyValue[1]]
+        tmpDF = tmpDF[df_Sheet1['col2'] == date2[5:7]]
         tmpDF = tmpDF[df_Sheet1[selectedColumnName1[2]] == keyValue[2]]
         sumValue = np.sum([float(x) for x in tmpDF[selectedColumnName1[3]].tolist()])
         row = pd.DataFrame([[df_Sheet1.iloc[0, 0], df_Sheet1.iloc[0, 1], df_Sheet1.iloc[0, 2], int(sumValue)]],
